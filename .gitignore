@@ -1,0 +1,14 @@
+# Ignore Django-generated files
+*.pyc
+__pycache__/
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+
+# database
+db.sqlite3
+
+# testing
+.coverage
+kv.json
