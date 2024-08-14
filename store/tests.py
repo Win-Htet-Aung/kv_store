@@ -46,7 +46,7 @@ class StoreTestCase(TestCase):
 
     def test_create_items_empty_body(self) -> None:
         response = self.client.post(
-            path="/values", data=None, content_type="application/json"
+            path="/values", data={}, content_type="application/json"
         )
         data = json.loads(response.content)
         self.assertEqual(response.status_code, 400)
@@ -103,3 +103,9 @@ class StoreTestCase(TestCase):
         response = self.client.get(path="/values")
         data = json.loads(response.content)
         self.assertEqual(data, {"key-2": "value-22"})
+    
+    def test_update_items_empty_body(self) -> None:
+        response = self.client.patch(path="/values", data={}, content_type="application/json")
+        data = json.loads(response.content)
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(data["message"], "Empty body!")
